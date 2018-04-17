@@ -7,4 +7,5 @@
 *.blg
 *.bbl
 *-blx.bib
+*.lof
 /main.pdf

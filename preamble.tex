@@ -16,13 +16,16 @@
 	url,      % PDF url linking
 	tikz      % Draw vector figures
 }
+\definecolor{aaublue}{RGB}{33,26,82}% Den officielle aau-blå farve.
 
 %layout
 \usepackage{
 	lastpage, % Adds \pageref{LastPage}
 	fancyhdr, % Customizing Header and Footer
 	titling,  % Adds \thedate \theauthor and \thetitle
-	todonotes % Adds \todo
+	todonotes,% Adds \todo
+	lmodern,  % Custom fontscaling
+	microtype % Custom fontspacing
 }
 
 %math
@@ -159,6 +162,10 @@
 %%%%%%%%%%%%%%%%%%
 %%%%  MACROS  %%%%
 %%%%%%%%%%%%%%%%%%
+
+%Fixes size of missing figure
+\let\dmissingfigure\missingfigure
+\renewcommand{\missingfigure}[1]{\resizebox{.7\linewidth}{!}{\dmissingfigure{#1}}}
 
 \newcommand{\blankpage}[0]{\vspace*{\fill}
 	\begin{center}
