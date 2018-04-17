@@ -160,6 +160,13 @@
 %%%%  MACROS  %%%%
 %%%%%%%%%%%%%%%%%%
 
+\newcommand{\blankpage}[0]{\vspace*{\fill}
+	\begin{center}
+		\iflanguage{danish}{Denne side er med vilje efterladt (næsten) tom.}{This page has intentionally been left (almost) blank.}
+	\end{center}
+	\vspace{\fill}
+}
+
 \newcommand{\newchapter}[1]{
 	%\pdfbookmark{#1}{#1}\\
 	\phantomsection
