@@ -1,0 +1,142 @@
+\documentclass[11pt, a4paper, twoside]{report}
+
+\usepackage[T1]{fontenc}    % Adding accented characters
+\usepackage[utf8]{inputenc} % Using unicode encoding
+\usepackage[
+	top=30mm,
+	bottom=30mm,
+	inner=41mm,% left margin on an odd page
+	outer=30mm, % right margin on an odd page
+	marginparwidth=25mm
+	]{geometry}% Kontrol over margener og papirstørelse.
+\usepackage[english, danish]{babel} 
+\usepackage{
+	graphicx, % Inserting vector and raster graphic
+	xcolor,   % Coloring font and drawings
+	url,      % PDF url linking
+	tikz      % Draw vector figures
+}
+
+%layout
+\usepackage{
+	lastpage, % Adds \pageref{LastPage}
+	fancyhdr, % Customizing Header and Footer
+	titling,  % Adds \thedate \theauthor and \thetitle
+	todonotes % Adds \todo
+}
+
+%math
+\usepackage{
+	amsmath, amsfonts, amssymb, % More math symbols and fonts
+	tabularx % Table environment with forced width
+}
+
+%writing
+\usepackage{
+	verbatim, % Adds Comment environmnet
+	csquotes, % Better quo­ta­tions
+	hyperref, % PDF links
+	caption,  % Correcting bugs with hyperref
+}
+\usepackage[
+	noabbrev,   % Displaying 'figure' instead of fig.
+	%capitalise % Capitalised refferences
+	]{cleveref}
+% Displaying warning when using wrong refference system
+\renewcommand{\autoref}{\todo[backgroundcolor=white, linecolor=black]{Use \textbackslash cref (cleveref) instead of \textbackslash autoref (hyperref).}}
+\usepackage[
+	nopar
+	]{lipsum} % Generate placeholder text
+
+%%%%%%%%%%%%%%%%%
+%%%%  SETUP  %%%%
+%%%%%%%%%%%%%%%%%
+\title{\thetitle}
+\author{\thegroup}
+\date{\deadline}
+
+\fancyhf{}% Clear header and footer
+\fancyfoot[C]{\thepage}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+% How extensive should the Table of Contents be.
+\setcounter{tocdepth}{2}
+
+% Bibliography Styles:
+% Social:            apa
+% Computer science:  ieee
+% Physics:           phys
+% Science:           science
+% Humanity:          authoryear
+\usepackage[
+	style=authoryear, % select bibliography style
+	sorting=nyt,      % Sort Refferences by Name, Year, Title
+	backend=bibtex     % bibtex(pre installed) or biber
+	]{biblatex}
+	
+\addbibresource{Bagsidestof/bibliografi.bib}
+
+\newcommand{\aautitlepage}[1]{
+	\newlength{\titlepageleftcolumnwidth}
+	\newlength{\titlepagerightcolumnwidth}
+	\setlength{\titlepageleftcolumnwidth}{0.45\textwidth}
+	\setlength{\titlepagerightcolumnwidth}{0.5\textwidth}
+	\noindent
+	\begin{minipage}{\titlepageleftcolumnwidth}
+		\begin{center}
+			\includegraphics[width=.8\titlepageleftcolumnwidth]{Figurer/aau_logo_\iflanguage{danish}{da}{en}.pdf}
+		\end{center}
+	\end{minipage}\hfill
+	\begin{minipage}{\titlepagerightcolumnwidth}
+		\begin{flushright}
+			\thestudy\\
+			\iflanguage{danish}{Aalborg Universitet}{Aalborg University}\\
+			\url{http://www.aau.dk/}
+		\end{flushright}
+	\end{minipage}\vspace{3ex}\\
+	\begin{minipage}[t]{\titlepageleftcolumnwidth}
+		\iflanguage{danish}{%
+			\textbf{Titel:}\\ \thetitle\bigskip\par
+			\textbf{Tema:}\\ \thetheme\bigskip\par
+			\textbf{Projektperiode:}\\ \theprojectperiod\bigskip\par
+			\textbf{Projektgruppe:}\\ \theauthor\bigskip\par
+			\textbf{Deltagere:}\\ \theauthors\bigskip\par
+			\textbf{Vejleder:}\\ \thesupervisor\bigskip\par
+			\textbf{Sidetal:} \pageref{LastPage}\bigskip\par
+			\textbf{Afleveringsdato:}\\ \deadline
+		}{%
+			\textbf{Title:}\\ \thetitle\bigskip\par
+			\textbf{Theme:}\\ \thetheme\bigskip\par
+			\textbf{Projectperiod:}\\ \theprojectperiod\bigskip\par
+			\textbf{Projectgroup:}\\ \theauthor\bigskip\par
+			\textbf{Authors:}\\ \theauthors\bigskip\par
+			\textbf{Supervisor:}\\ \thesupervisor\bigskip\par
+			\textbf{Pagecount:} \pageref{LastPage}\bigskip\par
+			\textbf{Deadline:}\\ \deadline  
+		}
+	\end{minipage}\hfill
+	\begin{minipage}[t]{\titlepagerightcolumnwidth}
+		\textbf{Abstract:}\medskip\\
+		\begin{otherlanguage}{english}
+			#1
+		\end{otherlanguage}
+	\end{minipage}
+	\vfill    
+	
+	\noindent
+	{\scriptsize\emph{
+		\iflanguage{danish}%
+		{Rapportens indhold er frit tilgængeligt, men offentliggørelse (med kildeangivelse) må kun ske efter aftale med forfatterne.}%
+		{The content of this report is freely available, but publication (with reference) may only be pursued due to agreement with the authors.}
+	}}
+}
+
+\newcommand{\newchapter}[1]{
+	%\pdfbookmark{#1}{#1}\\
+	\phantomsection
+	\addcontentsline{toc}{chapter}{#1}
+}
+
+%Command used to bring attention to a piece of text.
+\newcommand{\att}[1]{{\color{red}[#1]}}

@@ -1,39 +1,20 @@
-\documentclass[11pt, a4paper, twoside]{report}
-\usepackage[english, danish]{babel} 
-\usepackage{csquotes}
-% Bibliography Styles:
-% Social:           apa
-% Computer science: ieee
-% Physics:          phys
-% Science:          science
-% Humanity:         authoryear
-\usepackage[
-	style=authoryear, % select bibliography style
-	sorting=nyt,      % Sort Refferences by Name, Year, Title
-	backend=bibtex    % bibtex(pre installed) or biber
-	]{biblatex}
-
-\addbibresource{Bagsidestof/bibliografi.bib}
-\usepackage[nopar]{lipsum}
+\newcommand{\thetitle}{The Great Project\\ And How to Typeset it}
+\newcommand{\thegroup}{Group XXXX}
+\newcommand{\theauthors}{
+	Anders Andersen\\
+	Anders Andersen\\
+	Anders Andersen\\
+	Anders Andersen
+}
+\newcommand{\thesupervisor}{Your Supervisor}
+\newcommand{\thestudy}{Your Study}
+\newcommand{\thetheme}{Your Theme}
+\newcommand{\theprojectperiod}{Spring / Summer}
+\newcommand{\deadline}{\today}
+\input{preamble}
 
 \begin{document}
-\pagestyle{empty}
-Forside
-\clearpage
-
-\vspace*{\fill}
-\begin{center}
-	\iflanguage{danish}{Denne side er med vilje efterladt (næsten) tom.}{This page has intentionally been left (almost) blank.}
-\end{center}
-\vspace{\fill}
-\clearpage
-
-\pagestyle{plain}
-\pagenumbering{roman}
-\tableofcontents
-\cleardoublepage
-
-\pagenumbering{arabic}
+\input{forsidestof}
 
 \chapter{A Test Chapter}
 \lipsum[1]

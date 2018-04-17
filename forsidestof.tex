@@ -1,0 +1,34 @@
+\pagestyle{empty} %disable headers and footers
+\pagenumbering{alph}
+\iflanguage{danish}{\pdfbookmark{Forside}{Forside}}{\pdfbookmark{Frontpage}{Frontpage}}
+\maketitle
+\clearpage
+
+\vspace*{\fill}
+\begin{center}
+	\iflanguage{danish}{Denne side er med vilje efterladt (næsten) tom.}{This page has intentionally been left (almost) blank.}
+\end{center}
+\vspace{\fill}
+\clearpage
+
+\pagestyle{fancy}
+\pagenumbering{roman}
+\newchapter{\iflanguage{danish}{Titelside}{Titlepage}}
+\aautitlepage{
+	% The abstract. ~120 ord.
+	\lipsum[1]
+}
+\clearpage
+
+\newchapter{\iflanguage{danish}{Indholdsfortegnelse}{Contents}}
+\tableofcontents
+\cleardoublepage
+
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyfoot[RO, LE]{
+		\iflanguage{danish}{Side}{Page}~\thepage~\iflanguage{danish}{af}{of}~\pageref{LastPage}}%
+	\renewcommand{\headrulewidth}{0pt}
+}
+\pagestyle{plain}
+\pagenumbering{arabic}
