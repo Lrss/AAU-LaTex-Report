@@ -132,6 +132,34 @@
 	}}
 }
 
+% Custom chapter
+\makeatletter
+\def\@makechapterhead#1{%
+	%\vspace*{10\p@}
+	{\parindent \z@ \raggedright \normalfont
+		\ifnum \c@secnumdepth >\m@ne
+		\huge\bfseries \@chapapp\space \thechapter
+		\par\nobreak
+		\vskip 20\p@
+		\fi
+		\interlinepenalty\@M
+		\Huge \bfseries #1\par\nobreak
+		\vskip 30\p@
+}}
+\def\@makeschapterhead#1{%
+	%\vspace*{10\p@}
+	{\parindent \z@ \raggedright
+		\normalfont
+		\interlinepenalty\@M
+		\Huge \bfseries  #1\par\nobreak
+		\vskip 30\p@
+}}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%
+%%%%  MACROS  %%%%
+%%%%%%%%%%%%%%%%%%
+
 \newcommand{\newchapter}[1]{
 	%\pdfbookmark{#1}{#1}\\
 	\phantomsection
