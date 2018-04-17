@@ -31,7 +31,8 @@
 %math
 \usepackage{
 	amsmath, amsfonts, amssymb, % More math symbols and fonts
-	tabularx % Table environment with forced width
+	tabularx, % Table environment with forced width
+	siunitx   % Helpful way to print unit abreviations
 }
 
 %writing
@@ -172,10 +173,11 @@
 		\iflanguage{danish}{Denne side er med vilje efterladt (næsten) tom.}{This page has intentionally been left (almost) blank.}
 	\end{center}
 	\vspace{\fill}
+	\clearpage
 }
 
 \newcommand{\newchapter}[1]{
-	%\pdfbookmark{#1}{#1}\\
+	\clearpage
 	\phantomsection
 	\addcontentsline{toc}{chapter}{#1}
 }

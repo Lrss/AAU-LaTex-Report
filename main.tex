@@ -22,17 +22,18 @@
 \section{A Test Section}
 \lipsum[2] \autocite{goossens93}
 
-\lipsum[3]
+\lipsum[3] Illustrated on \cref{fig:themissingfigure}.
 \begin{figure}[h]
 	\centering
 	\missingfigure{I Haven't taken the picture yet.}
 	\caption{This is a figure}
+	\label{fig:themissingfigure}
 \end{figure}
 
 \section{Another Test Section}
 \lipsum[4]
 
-As written by \textcite{greenwade93}:
+Written by \textcite{greenwade93}:
 \lipsum[5] 
 
 % Print bibliography table:
@@ -41,6 +42,7 @@ As written by \textcite{greenwade93}:
 	,title={Litteraturliste}% Custom header to bibliography
 ]
 
+\newchapter{Figurer}
 \listoffigures
 
 \end{document}
