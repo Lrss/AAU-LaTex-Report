@@ -1,0 +1,57 @@
+\documentclass[11pt, a4paper, twoside]{report}
+\usepackage[english, danish]{babel} 
+\usepackage{csquotes}
+% Bibliography Styles:
+% Social:           apa
+% Computer science: ieee
+% Physics:          phys
+% Science:          science
+% Humanity:         authoryear
+\usepackage[
+	style=authoryear, % select bibliography style
+	sorting=nyt,      % Sort Refferences by Name, Year, Title
+	backend=bibtex    % bibtex(pre installed) or biber
+	]{biblatex}
+
+\addbibresource{Bagsidestof/bibliografi.bib}
+\usepackage[nopar]{lipsum}
+
+\begin{document}
+\pagestyle{empty}
+Forside
+\clearpage
+
+\vspace*{\fill}
+\begin{center}
+	\iflanguage{danish}{Denne side er med vilje efterladt (næsten) tom.}{This page has intentionally been left (almost) blank.}
+\end{center}
+\vspace{\fill}
+\clearpage
+
+\pagestyle{plain}
+\pagenumbering{roman}
+\tableofcontents
+\cleardoublepage
+
+\pagenumbering{arabic}
+
+\chapter{A Test Chapter}
+\lipsum[1]
+
+\section{A Test Section}
+\lipsum[2] \parencite{goossens93}
+
+\lipsum[3]
+
+\section{Another Test Section}
+\lipsum[4]
+
+\section{A Third Test Section}
+\lipsum[5] \parencite{greenwade93}
+
+% Print bibliography table:
+\printbibliography[
+	heading=bibintoc         % Add to contents 
+	,title={Litteraturliste}% Custom header to bibliography
+]
+\end{document}
