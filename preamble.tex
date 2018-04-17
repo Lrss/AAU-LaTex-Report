@@ -141,13 +141,32 @@
 \def\@makechapterhead#1{%
 	%\vspace*{10\p@}
 	{\parindent \z@ \raggedright \normalfont
-		\ifnum \c@secnumdepth >\m@ne
-		\huge\bfseries \@chapapp\space \thechapter
-		\par\nobreak
-		\vskip 20\p@
-		\fi
 		\interlinepenalty\@M
-		\Huge \bfseries #1\par\nobreak
+		\begin{tabularx}{\linewidth}{@{}X r@{}}
+			\parbox[b]{\hsize}{{\Huge \bfseries {\color{aaublue} #1 }}} &
+			\begin{tikzpicture}
+			\node[
+			outer sep=0pt,
+			text width=2.5cm,
+			minimum height=3cm,
+			fill=aaublue,
+			font=\color{white}\fontsize{70}{70}\selectfont,
+			align=center
+			] (num) {\thechapter};
+			\node[
+			rotate=90,
+			anchor=south,
+			font=\color{black}\Large\fontfamily{pbk}\fontseries{db}\fontshape{n}\selectfont
+			] at ([xshift=-5pt]num.west) {\textls[180]{\textsc{\@chapapp}}};
+			\end{tikzpicture}
+		\end{tabularx}\par\nobreak
+		{
+			\color{aaublue}
+			\rule{\textwidth}{2pt}
+			\vskip 3\p@
+			\hrule\par\nobreak
+		}
+		%\titlerule[2.5pt]\vskip3pt\titlerule\vskip-1.5cm
 		\vskip 30\p@
 }}
 \def\@makeschapterhead#1{%
@@ -155,7 +174,14 @@
 	{\parindent \z@ \raggedright
 		\normalfont
 		\interlinepenalty\@M
-		\Huge \bfseries  #1\par\nobreak
+		\Huge \bfseries  {\color{aaublue} #1 }\par\nobreak
+		\vskip -21\p@
+		{
+			\color{aaublue}
+			\rule{\textwidth}{2pt}
+			\vskip 3\p@
+			\hrule\par\nobreak
+		}
 		\vskip 30\p@
 }}
 \makeatother
